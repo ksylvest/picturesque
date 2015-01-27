@@ -1,4 +1,4 @@
 Rails.application.routes.draw do
-
-  mount Picturesque::Engine => "/picturesque"
+  root to: 'photos#index'
+  mount Picturesque::Engine, at: "/picturesque", as: :picturesque
 end

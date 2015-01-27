@@ -1,3 +1,77 @@
 = Picturesque
 
-This project rocks and uses MIT-LICENSE.
+Picturesque is a Ruby on Rails image resizing tool that enables simple dynamic image resizing.
+
+== Requirements
+
+The gem is tested with:
+
+* Ruby on Rails 4.2.0
+* Ruby 2.2.0
+* JRuby
+
+== Installation
+
+  gem install picturesque
+
+== Additional
+
+  brew install imagemagick
+
+== Configuration
+
+  # config/initializers/picturesque.rb
+  Picturesque.config do |config|
+    config.finder do |params|
+      Photo.find(params[:id]).url
+    end
+    config.metadata do |params|
+      metadata = {}
+      metadata['Cache-Control'] = 'public'
+      metadata['Expires'] = Time.now + 3.years
+      return metadata
+    end
+  end
+
+== Examples
+
+Migration:
+
+  rails g model photo url:string
+
+  class CreatePhoto < ActiveRecord::Migration
+    def self.up
+      create_table :videos do |t|
+        t.string :url
+
+        t.timestamps
+      end
+    end
+
+    def self.down
+      drop_table :videos
+    end
+  end
+
+Model:
+
+  class Photo < ActiveRecord::Base
+    validates_presence_of :photo
+  end
+
+View:
+
+  <%- @photos.each do |photo| -%>
+  <%= picturesque_url photo, size: '480x480', format: Picturesque::Format::JPG %>
+  <%- end -%>
+
+== Status
+
+{<img src="https://img.shields.io/gemnasium/ksylvest/picturesque.svg" />}[https://gemnasium.com/ksylvest/picturesque]
+{<img src="https://img.shields.io/travis/ksylvest/picturesque.svg" />}[https://travis-ci.org/ksylvest/picturesque]
+{<img src="https://img.shields.io/coveralls/ksylvest/picturesque.svg" />}[https://coveralls.io/r/ksylvest/picturesque]
+{<img src="https://img.shields.io/codeclimate/github/ksylvest/picturesque.svg" />}[https://codeclimate.com/github/ksylvest/picturesque]
+
+== Copyright
+
+Copyright (c) 2014 - 2015 Kevin Sylvestre. See LICENSE for details.
