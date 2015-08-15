@@ -5,12 +5,12 @@ default: &default
 
 development:
   <<: *default
-  database: dummy_development
+  database: picturesque_development
 
 test:
   <<: *default
-  database: dummy_test
+  database: picturesque_test
 
 production:
   <<: *default
-  database: dummy_production
+  database: picturesque_production

@@ -1,45 +1,43 @@
-require 'mini_magick'
-
 module Picturesque
   class Image
     include ActiveModel::Model
 
-    DISPOSITION = 'inline'.freeze
+    DISPOSITION = "inline".freeze
 
     module Format
-      JPG = 'jpg'.freeze
-      PNG = 'png'.freeze
-      GIF = 'gif'.freeze
+      JPG = "jpg".freeze
+      PNG = "png".freeze
+      GIF = "gif".freeze
     end
 
     module Quality
       HIGH = 90.freeze
+      WEAK = 10.freeze
     end
 
     attr_accessor :url
-    attr_accessor :width
-    attr_accessor :height
-    attr_accessor :quality
 
     def initialize(url)
       self.url = url
     end
 
-    def process(params = {})
-      file = MiniMagick::Image.open(self.url)
+    def process(size: nil, quality: nil, format: nil)
+      MiniMagick::Image.open(self.url).format(format || Format::JPG) do |file|
+        file.quality(quality || Quality::HIGH)
 
-      if params[:width] && Integer(params[:width]) > 0 && params[:height] && Integer(params[:height]) > 0
-        file = file.resize("#{params[:width]}x#{params[:height]}#")
+        if size
+          w,h = size.split("x")
+          if w && Integer(w) > 0 && h && Integer(h) > 0
+            file.resize("#{w}x#{h}^")
+            file.gravity "center"
+            file.extent "#{w}x#{h}"
+          end
+        end
       end
-
-      file = file.quality(params[:quality] || Quality::HIGH)
-      file = file.format(params[:format] || Format::JPG)
-      
-      return file
     end
 
     def self.find(id)
-      new('https://d1o2msdex49rzf.cloudfront.net/assets/banners/default-0eeaf9ea22f9733c89a453279f6d9672.jpg')
+      new(Picturesque.config.url.call(id))
     end
 
   end

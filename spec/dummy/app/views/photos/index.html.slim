@@ -1,0 +1,2 @@
+- @photos.each do |photo|
+  = image_tag picturesque.image_path(photo, size: '320x320', slug: photo.name.parameterize), size: '160x160'

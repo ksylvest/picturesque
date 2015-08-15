@@ -23,4 +23,9 @@ ActiveRecord::Schema.define(version: 20141218103615) do
     t.datetime "updated_at"
   end
 
+  create_table "picturesque_images", force: :cascade do |t|
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
 end

@@ -15,8 +15,14 @@ Gem::Specification.new do |s|
   s.files = Dir["{app,config,db,lib}/**/*", "LICENSE", "Rakefile", "README.rdoc"]
   s.test_files = Dir["test/**/*"]
 
-  s.add_dependency "rails", "~> 4.2.0"
+  s.add_dependency "rails"
   s.add_dependency "mini_magick"
 
   s.add_development_dependency "pg"
+  s.add_development_dependency "fabrication"
+  s.add_development_dependency "rspec-rails"
+  s.add_development_dependency "slim-rails"
+  s.add_development_dependency "sass-rails"
+  s.add_development_dependency "jquery-rails"
+  s.add_development_dependency "jquery-rails"
 end
