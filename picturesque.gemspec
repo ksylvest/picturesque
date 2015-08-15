@@ -18,7 +18,6 @@ Gem::Specification.new do |s|
   s.add_dependency "rails"
   s.add_dependency "mini_magick"
 
-  s.add_development_dependency "pg"
   s.add_development_dependency "fabrication"
   s.add_development_dependency "rspec-rails"
   s.add_development_dependency "slim-rails"
