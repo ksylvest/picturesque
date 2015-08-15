@@ -1,7 +1,7 @@
 language: ruby
 rvm:
   - 2.2.2
-  - jruby
+  - jruby-head
 script:
   - "bundle exec rake db:setup db:migrate app:db:test:prepare"
   - "bundle exec rspec spec"
