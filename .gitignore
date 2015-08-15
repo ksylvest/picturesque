@@ -1,6 +1,9 @@
 .bundle
 .sass*
 .powenv
+pkg
+log
+tmp
 coverage
 spec/dummy/config/application.yml
 spec/dummy/log/*

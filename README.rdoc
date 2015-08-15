@@ -6,9 +6,9 @@ Picturesque is a Ruby on Rails image resizing tool that enables simple dynamic i
 
 The gem is tested with:
 
-* Ruby on Rails 4.2.0
-* Ruby 2.2.0
-* JRuby
+* Ruby on Rails 4.2.2
+* Ruby 2.2.2
+* JRuby 9.0.0.0
 
 == Installation
 
@@ -22,7 +22,7 @@ The gem is tested with:
 
   # config/initializers/picturesque.rb
   Picturesque.config do |config|
-    config.finder do |params|
+    config.url do |id|
       Photo.find(params[:id]).url
     end
     config.metadata do |params|
@@ -56,13 +56,13 @@ Migration:
 Model:
 
   class Photo < ActiveRecord::Base
-    validates_presence_of :photo
+    validates_presence_of :url
   end
 
 View:
 
   <%- @photos.each do |photo| -%>
-  <%= picturesque_url photo, size: '480x480', format: Picturesque::Format::JPG %>
+  <%= image_tag(picturesque_image_url(photo, size: '64x64'), size: '64x64') %>
   <%- end -%>
 
 == Status
