@@ -21,16 +21,8 @@ The gem is tested with:
 == Configuration
 
   # config/initializers/picturesque.rb
-  Picturesque.config do |config|
-    config.url do |id|
-      Photo.find(params[:id]).url
-    end
-    config.metadata do |params|
-      metadata = {}
-      metadata['Cache-Control'] = 'public'
-      metadata['Expires'] = Time.now + 3.years
-      return metadata
-    end
+  Picturesque.setup do |config|
+    config.url -> (id) { Photo.find(id).url }
   end
 
 == Examples
