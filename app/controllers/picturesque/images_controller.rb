@@ -12,11 +12,5 @@ module Picturesque
       send_file @file.path, disposition: Picturesque::Image::DISPOSITION
     end
 
-  private
-
-    def settings
-      params.permit(:size,:quality,:format)
-    end
-
   end
 end
