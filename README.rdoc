@@ -1,6 +1,6 @@
 = Picturesque
 
-Picturesque is a Ruby on Rails image resizing tool that enables simple dynamic image resizing.
+Picturesque is an engine for resizing and formatting images on the fly.
 
 == Requirements
 
