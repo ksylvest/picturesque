@@ -4,6 +4,9 @@ require File.expand_path('../dummy/config/environment', __FILE__)
 require 'rspec/rails'
 
 require 'fabrication'
+require 'coveralls'
+
+Coveralls.wear!
 
 Fabrication.configure do |config|
   config.path_prefix = '.'
