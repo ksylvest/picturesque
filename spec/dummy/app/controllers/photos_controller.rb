@@ -1,6 +1,6 @@
 class PhotosController < ApplicationController
 
-  # get /
+  # GET /
   def index
     @photos = Photo.all
   end
