@@ -6,8 +6,8 @@ Picturesque is an engine for resizing and formatting images on the fly.
 
 The gem is tested with:
 
-* Ruby on Rails 4.2.3
-* Ruby 2.2.2
+* Ruby on Rails 4.2.5
+* Ruby 2.3.0
 * JRuby 9.0.0.0
 
 == Installation
@@ -22,39 +22,45 @@ The gem is tested with:
 
   # config/initializers/picturesque.rb
   Picturesque.setup do |config|
-    config.url -> (id) { Photo.find(id).url }
+    config.find = -> (params) { Picturesque::Image.new(Image.find(params[:id]).url) }
   end
 
 == Examples
 
 Migration:
 
-  rails g model photo url:string
+  rails g model image url:string
 
-  class CreatePhoto < ActiveRecord::Migration
+  class CreateImage < ActiveRecord::Migration
     def self.up
-      create_table :videos do |t|
-        t.string :url
+      create_table :images do |t|
+        t.string :url, presence: true, index: { unique: true }
+        t.string :description
 
         t.timestamps
       end
     end
 
     def self.down
-      drop_table :videos
+      drop_table :images
     end
   end
 
 Model:
 
-  class Photo < ActiveRecord::Base
-    validates_presence_of :url
+  class Image < ActiveRecord::Base
+    validates :url, presence: true, uniqueness: true
+
+    def slug
+      description.parameterize if description
+    end
   end
 
 View:
 
-  <%- @photos.each do |photo| -%>
-  <%= image_tag(picturesque_image_url(photo, size: '64x64'), size: '64x64') %>
+  <%- @images.each do |image| -%>
+  <%= image_tag(picturesque_image_url(image, size: '64x64', slug: image.slug),
+    srcset: picturesque_image_url(image, size: '64x64', slug: image.slug), size: '64x64') %>
   <%- end -%>
 
 == Status
@@ -66,4 +72,4 @@ View:
 
 == Copyright
 
-Copyright (c) 2014 - 2015 Kevin Sylvestre. See LICENSE for details.
+Copyright (c) 2014 - 2016 Kevin Sylvestre. See LICENSE for details.

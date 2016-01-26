@@ -1,5 +1,5 @@
 module Picturesque
   class Config
-    attr_accessor :url
+    attr_accessor :find
   end
 end

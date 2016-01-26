@@ -12,7 +12,6 @@ module Picturesque
 
     module Quality
       HIGH = 90.freeze
-      WEAK = 10.freeze
     end
 
     attr_accessor :url
@@ -36,8 +35,8 @@ module Picturesque
       end
     end
 
-    def self.find(id)
-      new(Picturesque.config.url.call(id))
+    def self.find(params)
+      Picturesque.config.find.call(params)
     end
 
   end
