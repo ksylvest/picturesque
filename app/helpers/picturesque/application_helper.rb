@@ -5,8 +5,8 @@ module Picturesque
       matches = size.match(/(?<w>\d+)\D(?<h>\d+)/)
       w , h = Integer(matches[:w]) , Integer(matches[:h])
 
-      image_tag picturesque.image_path(image, size: "#{w}x#{h}", slug: image.slug),
-        srcset: scales.map { |s| "#{picturesque.image_path(image, size: "#{w * s}x#{h * s}")} #{s}x" }.join(','),
+      image_tag picturesque.image_url(image, size: "#{w}x#{h}", slug: image.slug),
+        srcset: scales.map { |s| "#{picturesque.image_url(image, size: "#{w * s}x#{h * s}", slug: slug)} #{s}x" }.join(','),
         size: "#{w}×#{h}", alt: alt
     end
 
