@@ -1,7 +1,7 @@
 class Image < ActiveRecord::Base
 
   def slug
-    self.name.parameterize
+    name.parameterize
   end
 
 end

@@ -1,4 +1,4 @@
-require_dependency "picturesque/application_controller"
+require_dependency 'picturesque/application_controller'
 
 module Picturesque
   class ImagesController < ApplicationController
@@ -6,13 +6,19 @@ module Picturesque
     # GET /:id/(:size)(/:quality)(/:slug).(:format)
     def show
       @image = Picturesque::Image.find(params)
-      @file = @image.process(size: params[:size], quality: params[:quality], format: params[:format])
+      @file = @image.process(params.slice(:size, :quality, :format))
 
-      canonical = picturesque.image_url(id: params[:id], slug: params[:slug])
-      response.header['Link'] = "<#{canonical}>; rel=\"canonical\""
+      setup_canonical_link
 
       expires_in 3.years, public: @file
       send_file @file.path, disposition: Picturesque::Image::DISPOSITION
+    end
+
+  private
+
+    def setup_canonical_link
+      canonical = picturesque.image_url(params.slice(:id, :slug))
+      response.header['Link'] = %(<#{canonical}>; rel="canonical")
     end
 
   end

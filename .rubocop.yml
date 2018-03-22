@@ -1,0 +1,64 @@
+AllCops:
+  TargetRubyVersion: 2.5
+  Exclude:
+    - Gemfile
+    - Gemfile.lock
+    - tmp/**/*
+    - vendor/**/*
+    - spec/dummy/db/schema.rb
+    - spec/dummy/tmp/**/*
+    - spec/dummy/vendor/**/*
+
+Layout/AccessModifierIndentation:
+  EnforcedStyle: outdent
+
+Layout/EmptyLinesAroundBlockBody:
+  Enabled: false
+
+Layout/EmptyLinesAroundClassBody:
+  Enabled: false
+
+Layout/EmptyLinesAroundModuleBody:
+  Enabled: false
+
+Lint/AmbiguousBlockAssociation:
+  Enabled: false
+
+Style/SpecialGlobalVars:
+  Enabled: false
+
+Style/FrozenStringLiteralComment:
+  Enabled: false
+
+Style/Documentation:
+  Enabled: false
+
+Style/BlockDelimiters:
+  Enabled: false
+
+Style/TrailingCommaInArrayLiteral:
+  EnforcedStyleForMultiline: consistent_comma
+
+Style/TrailingCommaInHashLiteral:
+  EnforcedStyleForMultiline: consistent_comma
+
+Style/ExpandPathArguments:
+  Enabled: false
+
+Metrics/BlockLength:
+  Enabled: false
+
+Metrics/LineLength:
+  Max: 120
+
+  CacheRootDirectory: tmp/rubocop
+  Exclude:
+    - Gemfile
+    - Gemfile.lock
+    - config/environments/*
+    - db/schema.rb
+    - bin/**/*
+    - tmp/**/*
+    - vendor/**/*
+    - node_modules/**/*
+    - spec/spec_helper.rb

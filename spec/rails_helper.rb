@@ -10,7 +10,7 @@ Coveralls.wear!
 
 Fabrication.configure do |config|
   config.path_prefix = '.'
-  config.fabricator_path = ['spec/fabricators','spec/dummy/spec/fabricators']
+  config.fabricator_path = %w[spec/fabricators spec/dummy/spec/fabricators]
 end
 
 ActiveRecord::Migration.maintain_test_schema!

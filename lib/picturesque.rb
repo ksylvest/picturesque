@@ -1,16 +1,16 @@
-require "mini_magick"
+require 'mini_magick'
 
-require "picturesque/engine"
-require "picturesque/config"
+require 'picturesque/engine'
+require 'picturesque/config'
 
 module Picturesque
 
   def self.config
-    @@config ||= Picturesque::Config.new
+    @config ||= Picturesque::Config.new
   end
 
   def self.setup(&block)
-    block.call(self.config)
+    block.call(config)
   end
 
 end
