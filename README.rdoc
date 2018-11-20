@@ -73,7 +73,6 @@ The gem is tested with:
 
 == Status
 
-{<img src="https://img.shields.io/gemnasium/ksylvest/picturesque.svg" />}[https://gemnasium.com/ksylvest/picturesque]
 {<img src="https://img.shields.io/travis/ksylvest/picturesque.svg" />}[https://travis-ci.org/ksylvest/picturesque]
 {<img src="https://img.shields.io/coveralls/ksylvest/picturesque.svg" />}[https://coveralls.io/r/ksylvest/picturesque]
 {<img src="https://img.shields.io/codeclimate/github/ksylvest/picturesque.svg" />}[https://codeclimate.com/github/ksylvest/picturesque]
