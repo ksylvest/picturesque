@@ -1,0 +1,26 @@
+version: 2.1
+orbs:
+  ruby: circleci/ruby@1.0.2
+
+jobs:
+  build:
+    docker:
+      - image: circleci/ruby:2.7.1
+      - image: circleci/postgres:12.3-ram
+        environment:
+          POSTGRES_USER: circleci
+          POSTGRES_DB: picturesque_test
+          POSTGRES_HOST_AUTH_METHOD: trust
+    environment:
+      BUNDLE_JOBS: 4
+      BUNDLE_RETRY: 4
+      BUNDLE_PATH: vendor/bundle
+      BUNDLER_VERSION: 2.1.4
+      RAILS_ENV: test
+      RACK_ENV: test
+      PGHOST: localhost
+    steps:
+      - checkout
+      - ruby/install-deps
+      - run: dockerize -wait tcp://localhost:5432 -timeout 2m # Postgres
+      - ruby/rspec-test

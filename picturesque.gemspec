@@ -20,8 +20,7 @@ Gem::Specification.new do |s|
   s.add_dependency 'mini_magick'
 
   s.add_development_dependency 'fabrication'
-  s.add_development_dependency 'jquery-rails'
+  s.add_development_dependency 'rspec_junit_formatter'
   s.add_development_dependency 'rspec-rails'
-  s.add_development_dependency 'sass-rails'
   s.add_development_dependency 'slim-rails'
 end
