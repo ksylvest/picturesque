@@ -93,12 +93,6 @@ end
 <%- end -%>
 ```
 
-## Status
-
-[![TravisCI](https://img.shields.io/travis/ksylvest/picturesque.svg)](https://travis-ci.org/ksylvest/picturesque)
-[![Coveralls](https://img.shields.io/coveralls/ksylvest/picturesque.svg)](https://coveralls.io/r/ksylvest/picturesque)
-[![CodeClimate](https://img.shields.io/codeclimate/github/ksylvest/picturesque.svg)](https://codeclimate.com/github/ksylvest/picturesque)
-
 ## Copyright
 
 Copyright (c) 2014 - 2020 Kevin Sylvestre. See LICENSE for details.
