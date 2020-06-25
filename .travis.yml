@@ -1,7 +1,7 @@
 language: ruby
 rvm:
-  - 2.2.2
-  - jruby-9.0.0.0
+  - 2.6.6
+  - 2.7.1
 script:
-  - "bundle exec rake db:setup db:migrate app:db:test:prepare"
-  - "bundle exec rspec spec"
+  - bundle exec rake db:setup db:migrate app:db:test:prepare
+  - bundle exec rspec spec
