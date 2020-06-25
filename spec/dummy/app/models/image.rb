@@ -1,7 +1,5 @@
-class Image < ActiveRecord::Base
-
+class Image < ApplicationRecord
   def slug
     name.parameterize
   end
-
 end
