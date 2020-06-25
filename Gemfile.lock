@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    picturesque (1.0.2)
+    picturesque (1.0.3)
       mini_magick
       rails
 
