@@ -66,7 +66,7 @@ GEM
     builder (3.2.4)
     concurrent-ruby (1.1.6)
     crass (1.0.6)
-    diff-lcs (1.4.2)
+    diff-lcs (1.4.3)
     erubi (1.9.0)
     fabrication (2.21.1)
     globalid (0.4.2)
